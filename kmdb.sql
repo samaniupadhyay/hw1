@@ -101,13 +101,75 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS studio;
 
 -- Create new tables, according to your domain model
 -- TODO!
 
+CREATE TABLE movies (
+  movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_title TEXT,
+  movie_year INT,
+  mpaa_rating TEXT,
+  studio TEXT
+);
+CREATE TABLE actors (
+  movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name TEXT,
+  last_name TEXT,
+  actor_character TEXT
+);
+CREATE TABLE studio (
+  movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  studio TEXT
+);
+
+
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+
+-- movie tables
+INSERT INTO movies (
+  movie_title,
+  movie_year,
+  mpaa_rating,
+  studio
+)
+VALUES (
+  "Batman Begins",
+  2005,
+  "PG-13",
+  "Warner Bros."
+);
+
+INSERT INTO movies (
+  movie_title,
+  movie_year,
+  mpaa_rating,
+  studio
+)
+VALUES (
+  "The Dark Knight",
+  2008,
+  "PG-13",
+  "Warner Bros."
+);
+
+INSERT INTO movies (
+  movie_title,
+  movie_year,
+  mpaa_rating,
+  studio
+)
+VALUES (
+  "The Dark Knight Rises",
+  2012,
+  "PG-13",
+  "Warner Bros."
+);
 
 -- Prints a header for the movies output
 .print "Movies"

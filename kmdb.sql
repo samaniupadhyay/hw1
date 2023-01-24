@@ -103,7 +103,7 @@
 -- TODO!
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS actors;
-DROP TABLE IF EXISTS studio;
+DROP TABLE IF EXISTS characters;
 
 -- Create new tables, according to your domain model
 -- TODO!
@@ -117,14 +117,14 @@ CREATE TABLE movies (
 );
 CREATE TABLE actors (
   movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor_name TEXT,
-  actor_character TEXT
+  actor_id INT,
+  actor_name TEXT
 );
-CREATE TABLE studio (
+CREATE TABLE characters (
   movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  studio TEXT
+  actor_id INT,
+  character TEXT
 );
-
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
@@ -172,48 +172,188 @@ VALUES (
 
 --actor tables
 INSERT INTO actors (
-  actor_name,
-  actor_character
+  actor_id,
+  actor_name
 )
 VALUES (
-  "Christian Bale",
+  1,
+  "Christian Bale"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+  2,
+  "Michael Caine"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+   3,
+  "Liam Neeson"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+   4,
+  "Katie Holmes"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+  5,
+  "Gary Oldman"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+  6,
+  "Heath Ledger"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+  7,
+  "Aaron Eckhart"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+  8,
+  "Tom Hardy"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+  9,
+  "Joseph Gordon-Levitt"
+);
+
+INSERT INTO actors (
+  actor_id,
+  actor_name
+)
+VALUES (
+  10,
+  "Anne Hathaway"
+);
+ 
+
+--character
+
+
+INSERT INTO characters (
+  actor_id,
+  character
+)
+VALUES (
+  1,
   "Bruce Wayne"
 );
 
-INSERT INTO actors (
-  actor_name,
-  actor_character
+
+INSERT INTO characters (
+  actor_id,
+  character
 )
 VALUES (
-  "Michael Caine",
+  2,
   "Alfred"
 );
 
-INSERT INTO actors (
-  actor_name,
-  actor_character
+INSERT INTO characters (
+ actor_id,
+  character
 )
 VALUES (
-  "Liam Neeson",
+  3,
   "Ra's Al Ghul"
 );
 
-INSERT INTO actors (
-  actor_name,
-  actor_character
+INSERT INTO characters (
+  actor_id,
+  character
 )
 VALUES (
-  "Katie Holmes",
+  4,
   "Rachel Dawes"
 );
 
-INSERT INTO actors (
-  actor_name,
-  actor_character
+INSERT INTO characters (
+  actor_id,
+  character
 )
 VALUES (
-  "Gary Oldman",
-  "Commissioner Gordon"
+  5,
+  "Comissioner Gordon"
+);
+
+INSERT INTO characters (
+  actor_id,
+  character
+)
+VALUES (
+  6,
+  "Joker"
+);
+
+INSERT INTO characters (
+  actor_id,
+  character
+)
+VALUES (
+  7,
+  "Harvey Dent"
+);
+
+INSERT INTO characters (
+  actor_id,
+  character
+)
+VALUES (
+  8,
+  "Bane"
+);
+
+INSERT INTO characters (
+  actor_id,
+  character
+)
+VALUES (
+  9,
+  "John Blake"
+);
+
+INSERT INTO characters (
+  actor_id,
+  character
+)
+VALUES (
+  10,
+  "Selina Kyle"
 );
 
 
@@ -224,6 +364,8 @@ VALUES (
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT movie_title, movie_year, mpaa_rating, studio
+FROM movies;
 
 -- Prints a header for the cast output
 .print ""
@@ -231,6 +373,10 @@ VALUES (
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
 -- TODO!
+
+SELECT movies.movie_title, actors.actor_name, characters.character
+FROM movies
+INNER JOIN actors ON actors.actor_id = characters.actor_id
+INNER JOIN characters on actors.actor_id = characters.actor_id;

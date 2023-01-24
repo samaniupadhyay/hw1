@@ -117,8 +117,7 @@ CREATE TABLE movies (
 );
 CREATE TABLE actors (
   movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  first_name TEXT,
-  last_name TEXT,
+  actor_name TEXT,
   actor_character TEXT
 );
 CREATE TABLE studio (
@@ -170,6 +169,53 @@ VALUES (
   "PG-13",
   "Warner Bros."
 );
+
+--actor tables
+INSERT INTO actors (
+  actor_name,
+  actor_character
+)
+VALUES (
+  "Christian Bale",
+  "Bruce Wayne"
+);
+
+INSERT INTO actors (
+  actor_name,
+  actor_character
+)
+VALUES (
+  "Michael Caine",
+  "Alfred"
+);
+
+INSERT INTO actors (
+  actor_name,
+  actor_character
+)
+VALUES (
+  "Liam Neeson",
+  "Ra's Al Ghul"
+);
+
+INSERT INTO actors (
+  actor_name,
+  actor_character
+)
+VALUES (
+  "Katie Holmes",
+  "Rachel Dawes"
+);
+
+INSERT INTO actors (
+  actor_name,
+  actor_character
+)
+VALUES (
+  "Gary Oldman",
+  "Commissioner Gordon"
+);
+
 
 -- Prints a header for the movies output
 .print "Movies"
